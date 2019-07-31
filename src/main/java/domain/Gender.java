@@ -14,7 +14,6 @@ public class Gender {
     }
 
 
-
     public int getId() {
         return id;
     }
