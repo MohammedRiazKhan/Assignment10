@@ -1,30 +1,29 @@
-package repository.employee.impl;
+package service.employee.impl;
 
 import domain.Employee;
 import factory.EmployeeFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import repository.employee.EmployeeRepository;
+import service.employee.EmployeeService;
 
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class EmployeeRepositoryImplTest {
+public class EmployeeServiceImplTest {
 
-    private EmployeeRepository repository;
+    private EmployeeService service;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = EmployeeRepositoryImpl.getEmployeeRepository();
+        this.service = EmployeeServiceImpl.getService();
     }
-
 
     @Test
     public void getAll() {
 
-        Set<Employee> employeeSet = repository.getAll();
+        Set<Employee> employeeSet = service.getAll();
         Assert.assertNotNull(employeeSet);
 
     }
@@ -34,9 +33,9 @@ public class EmployeeRepositoryImplTest {
 
         Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
 
-        repository.create(employee);
+        service.create(employee);
 
-        Employee inRepo = repository.read(employee.getEmpNumber());
+        Employee inRepo = service.read(employee.getEmpNumber());
 
         Assert.assertNotNull(inRepo);
 
@@ -47,9 +46,9 @@ public class EmployeeRepositoryImplTest {
 
         Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
 
-        repository.create(employee);
+        service.create(employee);
 
-        Employee inRepo = repository.read(employee.getEmpNumber());
+        Employee inRepo = service.read(employee.getEmpNumber());
 
         Assert.assertNotNull(inRepo);
     }
@@ -59,12 +58,12 @@ public class EmployeeRepositoryImplTest {
 
         Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
 
-        repository.create(employee);
-        Employee inRepo = repository.read(employee.getEmpNumber());
+        service.create(employee);
+        Employee inRepo = service.read(employee.getEmpNumber());
 
         employee.setEmpFirstName("Not Riaz");
 
-        repository.update(employee);
+        service.update(employee);
 
         Assert.assertEquals(employee.getEmpNumber(), inRepo.getEmpNumber());
 
@@ -75,15 +74,15 @@ public class EmployeeRepositoryImplTest {
 
         Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
 
-        repository.create(employee);
+        service.create(employee);
 
-        Employee inRepo = repository.read(employee.getEmpNumber());
+        Employee inRepo = service.read(employee.getEmpNumber());
 
         Assert.assertNotNull(inRepo);
 
-        repository.delete(employee.getEmpNumber());
+        service.delete(employee.getEmpNumber());
 
-        Employee deleted = repository.read(employee.getEmpNumber());
+        Employee deleted = service.read(employee.getEmpNumber());
 
         Assert.assertNull(deleted);
 
