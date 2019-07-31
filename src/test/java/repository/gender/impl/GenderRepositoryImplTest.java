@@ -7,10 +7,6 @@ import static org.junit.Assert.*;
 public class GenderRepositoryImplTest {
 
     @Test
-    public void getGenderRepository() {
-    }
-
-    @Test
     public void getAll() {
     }
 

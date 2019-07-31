@@ -7,10 +7,6 @@ import static org.junit.Assert.*;
 public class RaceRepositoryImplTest {
 
     @Test
-    public void getRaceRepository() {
-    }
-
-    @Test
     public void getAll() {
     }
 
