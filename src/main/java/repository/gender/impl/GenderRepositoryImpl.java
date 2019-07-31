@@ -8,15 +8,14 @@ import java.util.Set;
 
 public class GenderRepositoryImpl implements GenderRepository {
 
-
-
-
     private static GenderRepositoryImpl genderRepository = null;
     private Set<Gender> genders;
 
 
     private GenderRepositoryImpl(){
+
         genders = new HashSet<Gender>();
+
     }
 
 
@@ -31,8 +30,10 @@ public class GenderRepositoryImpl implements GenderRepository {
 
 
     @Override
-    public Set<Gender> getAll() {
+    public Set<Gender> getAll(){
+
         return genders;
+
     }
 
     @Override
@@ -45,15 +46,14 @@ public class GenderRepositoryImpl implements GenderRepository {
     @Override
     public Gender read(Integer integer) {
 
-        Gender gender = find(integer);
-        return gender;
+        return genders.stream().filter(gender -> gender.getId() == integer).findAny().orElse(null);
 
     }
 
     @Override
     public Gender update(Gender gender) {
 
-        Gender genderToDelete = find(gender.getId());
+        Gender genderToDelete = read(gender.getId());
 
         if(genderToDelete != null) {
             genders.remove(genderToDelete);
@@ -66,7 +66,7 @@ public class GenderRepositoryImpl implements GenderRepository {
     @Override
     public void delete(Integer integer) {
 
-        Gender genderToDelete = find(integer);
+        Gender genderToDelete = read(integer);
 
         if(genderToDelete != null) {
             genders.remove(genderToDelete);
@@ -74,8 +74,5 @@ public class GenderRepositoryImpl implements GenderRepository {
 
     }
 
-    public Gender find(int id) {
-        return genders.stream().filter(gender -> gender.getId() == id).findAny().orElse(null);
-    }
 
 }

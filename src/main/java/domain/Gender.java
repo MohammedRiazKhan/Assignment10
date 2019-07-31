@@ -5,20 +5,23 @@ public class Gender {
     private int id;
     private String desc;
 
-    private Gender(){}
+    private Gender(){
 
-    public Gender(Builder builder)
-    {
+    }
+
+    public Gender(Builder builder){
+
         this.id = builder.id;
         this.desc = builder.desc;
+
     }
 
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
-    public String getDesc() {
+    public String getDesc(){
         return desc;
     }
 
@@ -32,22 +35,28 @@ public class Gender {
 
 
     public static class Builder {
+
         private int id;
         private String desc;
 
-        public Builder id(int id) {
+        public Builder id(int id){
+
             this.id = id;
             return this;
+
         }
 
-        public Builder desc(String desc) {
+        public Builder desc(String desc){
+
             this.desc = desc;
             return this;
 
         }
 
         public Gender build(){
+
             return new Gender(this);
+
         }
 
 

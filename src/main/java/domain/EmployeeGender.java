@@ -2,39 +2,34 @@ package domain;
 
 public class EmployeeGender {
 
-    private String empNumber, genderID;
+    private int genderID;
+    private int empNumber;
 
-    private EmployeeGender(){}
+    private EmployeeGender(){
 
+    }
 
-    public EmployeeGender(Builder builder)
-    {
+    public EmployeeGender(Builder builder) {
+
         this.empNumber = builder.empNumber;
         this.genderID = builder.genderID;
+
     }
 
-
-    public String getEmpNumber() {
-        return empNumber;
-    }
-
-    public void setEmpNumber(String empNumber) {
-        this.empNumber = empNumber;
-    }
-
-    public String getGenderID() {
+    public int getGenderID() {
         return genderID;
     }
 
-    public void setGenderID(String genderID) {
+    public void setGenderID(int genderID) {
         this.genderID = genderID;
     }
 
-    public EmployeeGender empGen(String empNumber, String genderID)
-    {
+    public int getEmpNumber() {
+        return empNumber;
+    }
+
+    public void setEmpNumber(int empNumber) {
         this.empNumber = empNumber;
-        this.genderID = genderID;
-        return this;
     }
 
     @Override
@@ -46,14 +41,16 @@ public class EmployeeGender {
     }
 
     public static class Builder {
-        private String empNumber, genderID;
 
-        public Builder empNumber(String empNumber) {
+        private int genderID;
+        private int empNumber;
+
+        public Builder empNumber(int empNumber) {
             this.empNumber = empNumber;
             return this;
         }
 
-        public Builder genderID(String genderID) {
+        public Builder genderID(int genderID) {
             this.genderID = genderID;
             return this;
 

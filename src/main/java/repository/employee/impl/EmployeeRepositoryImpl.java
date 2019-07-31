@@ -11,13 +11,13 @@ import java.util.Set;
 public class EmployeeRepositoryImpl implements EmployeeRepository{
 
 
-
     private static EmployeeRepositoryImpl employeeRepository = null;
     private Set<Employee> employees;
 
-
     private EmployeeRepositoryImpl(){
+
         employees = new HashSet<Employee>();
+
     }
 
 
@@ -31,18 +31,23 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
     }
 
     public Set<Employee> getAll() {
+
         return employees;
+
     }
 
     public Employee create(Employee employee) {
+
         employees.add(employee);
 
         return employee;
+
     }
 
     public Employee read(Integer integer) {
-        Employee employee = find(integer);
-        return employee;
+
+        return employees.stream().filter(employee -> employee.getEmpNumber() == integer).findAny().orElse(null);
+
     }
 
     public Employee update(Employee employee) {
@@ -64,11 +69,5 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
         }
 
     }
-
-   public Employee find(int id) {
-        return employees.stream().filter(employee -> employee.getEmpNumber() == id).findAny().orElse(null);
-    }
-
-
 
 }

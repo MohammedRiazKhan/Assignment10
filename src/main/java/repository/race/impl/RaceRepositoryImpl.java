@@ -9,15 +9,15 @@ import java.util.Set;
 public class RaceRepositoryImpl implements RaceRepository {
 
 
-
     private static RaceRepositoryImpl raceRepository = null;
     private Set<Race> races;
 
 
     public RaceRepositoryImpl(){
-        races = new HashSet<Race>();
-    }
 
+        races = new HashSet<Race>();
+
+    }
 
     public static RaceRepositoryImpl getRaceRepository() {
 
@@ -42,14 +42,14 @@ public class RaceRepositoryImpl implements RaceRepository {
 
     @Override
     public Race read(Integer integer) {
-        Race race = find(integer);
-        return race;
+
+        return races.stream().filter(race -> race.getRaceID() == integer).findAny().orElse(null);
     }
 
     @Override
     public Race update(Race race) {
 
-        Race raceToDelete = find(race.getId());
+        Race raceToDelete = read(race.getRaceID());
 
         if(raceToDelete != null) {
             races.remove(raceToDelete);
@@ -60,15 +60,12 @@ public class RaceRepositoryImpl implements RaceRepository {
 
     @Override
     public void delete(Integer integer) {
-        Race raceToDelete = find(integer);
+        Race raceToDelete = read(integer);
 
         if(raceToDelete != null) {
             races.remove(raceToDelete);
         }
     }
 
-    public Race find(int id) {
-        return races.stream().filter(race -> race.getId() == id).findAny().orElse(null);
-    }
 
 }

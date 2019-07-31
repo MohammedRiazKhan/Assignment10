@@ -5,28 +5,39 @@ public class Race {
     private int raceID;
     private String desc;
 
-    private Race(){}
+    private Race(){
 
-    public Race(Builder builder)
-    {
+    }
+
+    public Race(Builder builder){
+
         this.raceID = builder.raceID;
         this.desc = builder.desc;
+
     }
 
-    public int getRaceID() {
+    public int getRaceID(){
+
         return raceID;
+
     }
 
-    public void setRaceID(int raceID) {
+    public void setRaceID(int raceID){
+
         this.raceID = raceID;
+
     }
 
-    public String getDesc() {
+    public String getDesc(){
+
         return desc;
+
     }
 
-    public void setDesc(String desc) {
+    public void setDesc(String desc){
+
         this.desc = desc;
+
     }
 
     @Override
@@ -38,22 +49,29 @@ public class Race {
     }
 
     public static class Builder {
-        private int raceID;
-            private String desc;
 
-        public Builder raceID(int raceID) {
+        private int raceID;
+        private String desc;
+
+        public Builder raceID(int raceID){
+
             this.raceID = raceID;
             return this;
+
         }
 
-        public Builder desc(String desc) {
+        public Builder desc(String desc){
+
             this.desc = desc;
             return this;
 
+
         }
 
-        public Race build() {
+        public Race build(){
+
             return new Race(this);
+
         }
 
     }
