@@ -1,11 +1,9 @@
 package factory;
 
-import domain.Race;
+import domain.demography.Race;
+import factory.demography.RaceFactory;
 import org.junit.Assert;
 import org.junit.Test;
-import service.race.RaceService;
-
-import static org.junit.Assert.*;
 
 public class RaceFactoryTest {
 

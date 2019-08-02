@@ -1,10 +1,9 @@
 package factory;
 
-import domain.Gender;
+import domain.demography.Gender;
+import factory.demography.GenderFactory;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class GenderFactoryTest {
 

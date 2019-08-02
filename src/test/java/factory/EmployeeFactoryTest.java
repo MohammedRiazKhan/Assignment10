@@ -1,10 +1,9 @@
 package factory;
 
-import domain.Employee;
+import domain.user.Employee;
+import factory.user.EmployeeFactory;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class EmployeeFactoryTest {
 
