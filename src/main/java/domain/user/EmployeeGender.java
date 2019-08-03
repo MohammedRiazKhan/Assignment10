@@ -1,4 +1,4 @@
-package domain.demography;
+package domain.user;
 
 public class EmployeeGender {
 
@@ -8,7 +8,6 @@ public class EmployeeGender {
     public EmployeeGender(){
 
     }
-
 
     public int getGenderID() {
         return genderID;

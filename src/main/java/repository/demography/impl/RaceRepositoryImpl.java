@@ -8,10 +8,8 @@ import java.util.Set;
 
 public class RaceRepositoryImpl implements RaceRepository {
 
-
     private static RaceRepositoryImpl raceRepository = null;
     private Set<Race> races;
-
 
     public RaceRepositoryImpl(){
 

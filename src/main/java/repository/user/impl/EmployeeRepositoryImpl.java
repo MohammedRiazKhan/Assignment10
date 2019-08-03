@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-
     private static EmployeeRepositoryImpl employeeRepository = null;
     private Set<Employee> employees;
 

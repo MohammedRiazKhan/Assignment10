@@ -1,4 +1,4 @@
-package factory;
+package factory.demography;
 
 import domain.demography.Gender;
 import factory.demography.GenderFactory;
@@ -10,7 +10,7 @@ public class GenderFactoryTest {
     @Test
     public void getGender() {
 
-        Gender gender = GenderFactory.getGender(1, "M");
+        Gender gender = GenderFactory.buildGender(1, "M");
         Assert.assertNotNull(gender);
 
     }

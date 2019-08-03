@@ -1,7 +1,7 @@
-package factory;
+package factory.user;
 
-import domain.demography.EmployeeGender;
-import factory.demography.EmployeeGenderFactory;
+import domain.user.EmployeeGender;
+import factory.user.EmployeeGenderFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

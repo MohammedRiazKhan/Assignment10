@@ -1,10 +1,10 @@
-package service.race.impl;
+package repository.user.impl;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class RaceServiceImplTest {
+public class EmployeeGenderRepositoryImplTest {
 
     @Test
     public void getAll() {

@@ -8,16 +8,15 @@ import java.util.Set;
 
 public class GenderRepositoryImpl implements GenderRepository {
 
+
     private static GenderRepositoryImpl genderRepository = null;
     private Set<Gender> genders;
 
-
-    private GenderRepositoryImpl(){
+    public GenderRepositoryImpl(){
 
         genders = new HashSet<Gender>();
 
     }
-
 
     public static GenderRepositoryImpl getGenderRepository() {
 

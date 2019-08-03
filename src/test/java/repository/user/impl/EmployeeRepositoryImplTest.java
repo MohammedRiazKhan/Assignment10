@@ -1,4 +1,4 @@
-package repository.employee.impl;
+package repository.user.impl;
 
 import domain.user.Employee;
 import factory.user.EmployeeFactory;

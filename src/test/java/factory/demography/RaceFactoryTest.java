@@ -1,4 +1,4 @@
-package factory;
+package factory.demography;
 
 import domain.demography.Race;
 import factory.demography.RaceFactory;
