@@ -25,6 +25,14 @@ public class Gender {
         return desc;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
     @Override
     public String toString() {
         return "Gender{" +

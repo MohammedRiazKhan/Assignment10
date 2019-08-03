@@ -1,5 +1,13 @@
 package controller.user;
 
+import domain.demography.Gender;
+import domain.demography.Race;
+import domain.user.Employee;
+import domain.user.EmployeeGender;
+import factory.demography.GenderFactory;
+import factory.demography.RaceFactory;
+import factory.user.EmployeeFactory;
+import factory.user.EmployeeGenderFactory;
 import org.junit.Before;
 import org.junit.Test;
 import service.demography.GenderService;
@@ -16,16 +24,24 @@ import static org.junit.Assert.*;
 public class EmployeeControllerTest {
 
 
-    private EmployeeService employeeService = EmployeeServiceImpl.getService();
-    private EmployeeGenderService employeeGenderService = EmployeeGenderServiceImpl.getService();
-    private RaceService raceService = RaceServiceImpl.getService();
-    private GenderService genderService = GenderServiceImpl.getService();
+    private EmployeeController employeeController;
+
 
     @Before
     public void setUp() throws Exception {
+        employeeController = new EmployeeController();
     }
 
     @Test
     public void create() {
+
+        Gender gender = GenderFactory.buildGender(1, "M");
+        Race race = RaceFactory.buildRace(1,"fa");
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(1, 1);
+        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+
+        employeeController.create(employee.getEmpNumber(), employee.getEmpLastName(),employee.getEmpLastName(), gender.getId(),race.getRaceID());
+
+
     }
 }
