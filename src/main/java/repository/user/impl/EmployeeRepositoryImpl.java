@@ -49,13 +49,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     public Employee update(Employee employee) {
 
-        Employee toDelete = read(employee.getEmpNumber());
+        Employee toUpdate = read(employee.getEmpNumber());
 
-        if(toDelete != null) {
-            employees.remove(toDelete);
-            return create(employee);
+        if(employees.contains(employee)){
+            employees.remove(toUpdate);
+            employees.add(employee);
         }
+
         return null;
+
     }
 
     public void delete(Integer integer) {

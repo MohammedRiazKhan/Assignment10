@@ -57,15 +57,16 @@ public class EmployeeRepositoryImplTest {
     public void update() {
 
         Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
-
         repository.create(employee);
-        Employee inRepo = repository.read(employee.getEmpNumber());
 
-        employee.setEmpFirstName("Not Riaz");
+        Assert.assertNotNull(repository.getAll());
 
-        repository.update(employee);
+        Employee updatedEmployee = EmployeeFactory.getEmployee(employee.getEmpNumber(), "Ashley", "Kriel");
 
-        Assert.assertEquals(employee.getEmpNumber(), inRepo.getEmpNumber());
+        repository.update(updatedEmployee);
+
+        Assert.assertNotEquals(employee.getEmpFirstName(), updatedEmployee.getEmpFirstName());
+
 
     }
 

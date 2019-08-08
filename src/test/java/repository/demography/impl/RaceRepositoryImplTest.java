@@ -57,16 +57,14 @@ public class RaceRepositoryImplTest {
     @Test
     public void update() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
-
+        Race employee = RaceFactory.buildRace(1,"Indian");
         repository.create(employee);
-        Race inRepo = repository.read(employee.getRaceID());
 
-        employee.setDesc("Not Riaz");
+        Race updatedRace =  RaceFactory.buildRace(1,"White");
 
-        repository.update(employee);
+        repository.update(updatedRace);
 
-        Assert.assertEquals(employee.getRaceID(), inRepo.getRaceID());
+        Assert.assertNotEquals(employee.getDesc(), updatedRace.getDesc());
 
     }
 

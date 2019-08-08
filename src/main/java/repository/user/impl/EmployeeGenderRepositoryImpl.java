@@ -49,12 +49,13 @@ public class EmployeeGenderRepositoryImpl implements EmployeeGenderRepository {
 
     public EmployeeGender update(EmployeeGender employeeGender) {
 
-        EmployeeGender toDelete = read(employeeGender.getEmpNumber());
+        EmployeeGender toUpdate = read(employeeGender.getEmpNumber());
 
-        if(toDelete != null) {
-            employeeGenders.remove(toDelete);
-            return create(employeeGender);
+        if(employeeGenders.contains(employeeGender)){
+            employeeGenders.remove(employeeGender);
+            employeeGenders.add(toUpdate);
         }
+
         return null;
     }
 

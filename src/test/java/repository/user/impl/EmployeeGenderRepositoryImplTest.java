@@ -58,15 +58,13 @@ public class EmployeeGenderRepositoryImplTest {
     public void update() {
 
         EmployeeGender employee = EmployeeGenderFactory.buildEmployeeGender(1, 1);
-
         repository.create(employee);
-        EmployeeGender inRepo = repository.read(employee.getEmpNumber());
 
-        employee.setEmpNumber(2);
+        EmployeeGender updatedEmpGender = EmployeeGenderFactory.buildEmployeeGender(1, 2);
 
-        repository.update(employee);
+        repository.update(updatedEmpGender);
 
-        Assert.assertEquals(employee.getEmpNumber(), inRepo.getEmpNumber());
+        Assert.assertNotEquals(employee.getGenderID(), updatedEmpGender.getEmpNumber());
 
     }
 

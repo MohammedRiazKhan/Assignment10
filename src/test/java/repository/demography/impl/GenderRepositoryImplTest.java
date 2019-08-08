@@ -56,15 +56,13 @@ public class GenderRepositoryImplTest {
     public void update() {
 
         Gender employee = GenderFactory.buildGender(1, "M");
-
         repository.create(employee);
-        Gender inRepo = repository.read(employee.getId());
 
-        employee.setDesc("F");
+        Gender updatedEmployee = GenderFactory.buildGender(1, "F");
 
-        repository.update(employee);
+        repository.update(updatedEmployee);
 
-        Assert.assertEquals(employee.getDesc(), inRepo.getDesc());
+        Assert.assertNotEquals(employee.getDesc(), updatedEmployee.getDesc());
 
     }
 
