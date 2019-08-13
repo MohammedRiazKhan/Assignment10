@@ -1,7 +1,13 @@
 package service.user.impl;
 
+import domain.demography.Gender;
+import domain.demography.Race;
 import domain.user.Employee;
+import domain.user.EmployeeGender;
+import factory.demography.GenderFactory;
+import factory.demography.RaceFactory;
 import factory.user.EmployeeFactory;
+import factory.user.EmployeeGenderFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -85,4 +91,19 @@ public class EmployeeServiceImplTest {
         Assert.assertNull(deleted);
 
     }
+
+    @Test
+    public void createEmp() {
+
+        Gender gender = GenderFactory.buildGender(1, "M");
+        Race race = RaceFactory.buildRace(1,"fa");
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(1, 1);
+        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+
+        service.createEmp(employee.getEmpNumber(), employee.getEmpLastName(),employee.getEmpLastName(), gender.getId(),race.getRaceID());
+
+        Assert.assertNotNull(service);
+
+    }
+
 }
