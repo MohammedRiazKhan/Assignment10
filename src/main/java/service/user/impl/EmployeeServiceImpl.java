@@ -70,24 +70,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
-    @Override
-    public void createEmp(int empId, String firstName, String lastName, int genderId, int raceId){
-
-        Employee employee = EmployeeFactory.getEmployee(empId, firstName, lastName);
-        repository.create(employee);
-
-        Race race = RaceFactory.buildRace(raceId, "Race");
-        raceRepository.create(race);
-
-        Gender gender = GenderFactory.buildGender(genderId, "None");
-        genderRepository.create(gender);
-
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
-        employeeGenderRepository.create(employeeGender);
-
-
-
-
-    }
 
 }
