@@ -20,27 +20,12 @@ import service.user.impl.EmployeeServiceImpl;
 public class EmployeeController {
 
     private EmployeeService employeeService = EmployeeServiceImpl.getService();
-    private EmployeeGenderService employeeGenderService = EmployeeGenderServiceImpl.getService();
-    private RaceService raceService = RaceServiceImpl.getService();
-    private GenderService genderService = GenderServiceImpl.getService();
 
-    public void create(int empId, String firstName, String lastName, int genderId, int raceId){
+    public Employee create(int empId, String firstName, String lastName, int genderId, int raceId){
 
-        Employee employee = EmployeeFactory.getEmployee(empId, firstName, lastName);
-        employeeService.create(employee);
-
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
-        employeeGenderService.create(employeeGender);
-
-        Race race = RaceFactory.buildRace(raceId, "Race");
-        raceService.create(race);
-
-        Gender gender = GenderFactory.buildGender(genderId, "None");
-        genderService.create(gender);
-
+        return employeeService.createEmployee(empId, firstName, lastName, genderId, raceId);
 
     }
-
 
 
 }
