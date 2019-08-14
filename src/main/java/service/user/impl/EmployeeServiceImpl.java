@@ -76,14 +76,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = EmployeeFactory.getEmployee(empId, firstName, lastName);
         repository.create(employee);
 
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
-        employeeGenderRepository.create(employeeGender);
-
         Race race = RaceFactory.buildRace(raceId, "Race");
         raceRepository.create(race);
 
         Gender gender = GenderFactory.buildGender(genderId, "None");
         genderRepository.create(gender);
+
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
+        employeeGenderRepository.create(employeeGender);
+
+
 
 
     }
