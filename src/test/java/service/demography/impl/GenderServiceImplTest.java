@@ -29,7 +29,7 @@ public class GenderServiceImplTest {
     @Test
     public void create() {
 
-        Gender employee = GenderFactory.buildGender(1, "M");
+        Gender employee = GenderFactory.buildGender("M");
 
         service.create(employee);
 
@@ -42,7 +42,7 @@ public class GenderServiceImplTest {
     @Test
     public void read() {
 
-        Gender employee = GenderFactory.buildGender(1, "M");
+        Gender employee = GenderFactory.buildGender("M");
 
         service.create(employee);
 
@@ -54,7 +54,7 @@ public class GenderServiceImplTest {
     @Test
     public void update() {
 
-        Gender employee = GenderFactory.buildGender(1, "M");
+        Gender employee = GenderFactory.buildGender("M");
 
         service.create(employee);
         Gender inRepo = service.read(employee.getId());
@@ -70,7 +70,7 @@ public class GenderServiceImplTest {
     @Test
     public void delete() {
 
-        Gender employee = GenderFactory.buildGender(1, "M");
+        Gender employee = GenderFactory.buildGender("M");
 
         service.create(employee);
 

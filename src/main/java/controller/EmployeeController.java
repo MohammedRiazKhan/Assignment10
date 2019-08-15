@@ -1,4 +1,4 @@
-package controller.user;
+package controller;
 
 import domain.demography.Gender;
 import domain.demography.Race;
@@ -8,24 +8,18 @@ import factory.demography.GenderFactory;
 import factory.demography.RaceFactory;
 import factory.user.EmployeeFactory;
 import factory.user.EmployeeGenderFactory;
-import service.demography.GenderService;
-import service.demography.RaceService;
 import service.demography.impl.GenderServiceImpl;
 import service.demography.impl.RaceServiceImpl;
-import service.user.EmployeeGenderService;
 import service.user.EmployeeService;
-import service.user.impl.EmployeeGenderServiceImpl;
 import service.user.impl.EmployeeServiceImpl;
 
 public class EmployeeController {
 
     private EmployeeService employeeService = EmployeeServiceImpl.getService();
 
-    public Employee create(int empId, String firstName, String lastName, int genderId, int raceId){
+    public Employee createEmployee(String fName, String lName, String gender, String race){
 
-        return employeeService.createEmployee(empId, firstName, lastName, genderId, raceId);
+        return employeeService.createEmployee(fName, lName, gender, race);
 
     }
-
-
 }

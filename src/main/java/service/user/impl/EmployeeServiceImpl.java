@@ -16,31 +16,25 @@ import repository.user.EmployeeGenderRepository;
 import repository.user.EmployeeRepository;
 import repository.user.impl.EmployeeGenderRepositoryImpl;
 import repository.user.impl.EmployeeRepositoryImpl;
-import service.demography.GenderService;
-import service.demography.RaceService;
 import service.demography.impl.GenderServiceImpl;
 import service.demography.impl.RaceServiceImpl;
-import service.user.EmployeeGenderService;
 import service.user.EmployeeService;
 
 import java.util.Set;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-
     private static EmployeeServiceImpl service = null;
     private EmployeeRepository repository;
+    private GenderRepository genderRepository;
     private EmployeeGenderRepository employeeGenderRepository;
     private RaceRepository raceRepository;
-    private GenderRepository genderRepository;
-
 
     public EmployeeServiceImpl() {
         repository = EmployeeRepositoryImpl.getEmployeeRepository();
+        genderRepository = GenderRepositoryImpl.getGenderRepository();
         employeeGenderRepository = EmployeeGenderRepositoryImpl.getEmployeeGenderRepository();
         raceRepository = RaceRepositoryImpl.getRaceRepository();
-        genderRepository = GenderRepositoryImpl.getGenderRepository();
-
     }
 
     public static EmployeeServiceImpl getService(){
@@ -57,31 +51,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee createEmployee(int empId, String firstName, String lastName, int genderId, int raceId) {
-
-        Employee employee = EmployeeFactory.getEmployee(empId, firstName, lastName);
-        service.create(employee);
-
-        Race race = RaceFactory.buildRace(raceId, "Yellow");
-        raceRepository.create(race);
-
-        Gender gender = GenderFactory.buildGender(genderId, "Male");
-        genderRepository.create(gender);
-
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
-        employeeGenderRepository.create(employeeGender);
-
-        return employee;
-    }
-
-    @Override
     public Employee create(Employee employee) {
         return repository.create(employee);
     }
 
     @Override
-    public Employee read(Integer integer) {
-        return repository.read(integer);
+    public Employee read(String id) {
+        return repository.read(id);
     }
 
     @Override
@@ -90,9 +66,35 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String id) {
 
-        repository.delete(integer);
+        repository.delete(id);
 
     }
+
+    @Override
+    public Employee createEmployee(String firstName, String lastName, String race, String gender){
+
+        Gender aGender = GenderServiceImpl.getService().readByName(gender);
+        if(aGender == null){
+            return null;
+        }
+
+        Race aRace = RaceServiceImpl.getService().readByName(race);
+        if(aRace == null){
+            return null;
+        }
+
+        Employee employee = EmployeeFactory.getEmployee(firstName, lastName);
+        if(employee == null){
+            return null;
+        }
+
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(employee.getEmpNumber(), aGender.getId());
+        employeeGenderRepository.create(employeeGender);
+
+        return create(employee);
+
+    }
+
 }
