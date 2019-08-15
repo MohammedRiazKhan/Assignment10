@@ -35,8 +35,8 @@ public class GenderServiceImpl implements GenderService {
     }
 
     @Override
-    public Gender read(Integer integer) {
-        return repository.read(integer);
+    public Gender read(String id) {
+        return repository.read(id);
     }
 
     @Override
@@ -45,7 +45,15 @@ public class GenderServiceImpl implements GenderService {
     }
 
     @Override
-    public void delete(Integer integer) {
-        repository.delete(integer);
+    public void delete(String id) {
+        repository.delete(id);
+    }
+
+    //need to implement a method which will get a gender by Name
+    @Override
+    public Gender readByName(String genderDesc){
+        //will query the repository/db and find the gender by its name
+        //in the repository there must be a method which returns that value
+        return repository.readByName(genderDesc);
     }
 }

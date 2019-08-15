@@ -31,7 +31,7 @@ public class RaceServiceImplTest {
     @Test
     public void create() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         service.create(employee);
 
@@ -44,7 +44,7 @@ public class RaceServiceImplTest {
     @Test
     public void read() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         service.create(employee);
 
@@ -56,7 +56,7 @@ public class RaceServiceImplTest {
     @Test
     public void update() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         service.create(employee);
         Race inRepo = service.read(employee.getRaceID());
@@ -72,7 +72,7 @@ public class RaceServiceImplTest {
     @Test
     public void delete() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         service.create(employee);
 

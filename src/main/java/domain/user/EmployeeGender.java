@@ -2,30 +2,30 @@ package domain.user;
 
 public class EmployeeGender {
 
-    private int genderID;
-    private int empNumber;
+    private String genderID;
+    private String empNumber;
 
     public EmployeeGender(){
 
     }
 
-    public int getGenderID() {
+    public String getGenderID() {
         return genderID;
     }
 
-    public void setGenderID(int genderID) {
+    public void setGenderID(String genderID) {
         this.genderID = genderID;
     }
 
-    public int getEmpNumber() {
+    public String getEmpNumber() {
         return empNumber;
     }
 
-    public void setEmpNumber(int empNumber) {
+    public void setEmpNumber(String empNumber) {
         this.empNumber = empNumber;
     }
 
-    public EmployeeGender employeeGender(int empNumber, int genderId){
+    public EmployeeGender employeeGender(String empNumber, String genderId){
 
 
         this.empNumber = empNumber;

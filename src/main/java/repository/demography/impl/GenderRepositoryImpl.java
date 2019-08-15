@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class GenderRepositoryImpl implements GenderRepository {
 
-
     private static GenderRepositoryImpl genderRepository = null;
     private Set<Gender> genders;
 
@@ -43,9 +42,9 @@ public class GenderRepositoryImpl implements GenderRepository {
     }
 
     @Override
-    public Gender read(Integer integer) {
+    public Gender read(String id) {
 
-        return genders.stream().filter(gender -> gender.getId() == integer).findAny().orElse(null);
+        return genders.stream().filter(gender -> gender.getId() == id).findAny().orElse(null);
 
     }
 
@@ -63,9 +62,9 @@ public class GenderRepositoryImpl implements GenderRepository {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String id) {
 
-        Gender genderToDelete = read(integer);
+        Gender genderToDelete = read(id);
 
         if(genderToDelete != null) {
             genders.remove(genderToDelete);
@@ -73,7 +72,11 @@ public class GenderRepositoryImpl implements GenderRepository {
 
     }
 
-
+    //method which will search the set/db for the corresponding gender
+    public Gender readByName(String genderDesc){
+        //do the logic to get the gender
+        return genders.stream().filter(gender -> gender.getDesc().equals(genderDesc)).findAny().orElse(null);
+    }
 
 
 }

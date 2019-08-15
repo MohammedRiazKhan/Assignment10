@@ -35,7 +35,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void create() {
 
-        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+        Employee employee = EmployeeFactory.getEmployee("Riaz", "Khan");
 
         service.create(employee);
 
@@ -48,7 +48,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void read() {
 
-        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+        Employee employee = EmployeeFactory.getEmployee("Riaz", "Khan");
 
         service.create(employee);
 
@@ -60,7 +60,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void update() {
 
-        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+        Employee employee = EmployeeFactory.getEmployee("Riaz", "Khan");
 
         service.create(employee);
         Employee inRepo = service.read(employee.getEmpNumber());
@@ -76,7 +76,7 @@ public class EmployeeServiceImplTest {
     @Test
     public void delete() {
 
-        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
+        Employee employee = EmployeeFactory.getEmployee("Riaz", "Khan");
 
         service.create(employee);
 
@@ -92,18 +92,6 @@ public class EmployeeServiceImplTest {
 
     }
 
-    @Test
-    public void createEmp() {
 
-        Gender gender = GenderFactory.buildGender(1, "M");
-        Race race = RaceFactory.buildRace(1,"fa");
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(1, 1);
-        Employee employee = EmployeeFactory.getEmployee(1, "Riaz", "Khan");
-
-        service.createEmp(employee.getEmpNumber(), employee.getEmpLastName(),employee.getEmpLastName(), gender.getId(),race.getRaceID());
-
-        Assert.assertNotNull(service);
-
-    }
 
 }

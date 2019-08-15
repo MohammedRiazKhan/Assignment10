@@ -1,13 +1,14 @@
 package service.user;
 
 import domain.user.Employee;
+import domain.user.EmployeeGender;
 import service.Service;
 
 import java.util.Set;
 
-public interface EmployeeService extends Service<Employee, Integer> {
+public interface EmployeeService extends Service<Employee, String> {
 
     Set<Employee> getAll();
-    void createEmp(int empId, String firstName, String lastName, int genderId, int raceId);
+    Employee createEmployee(String firstName, String lastName, String race, String gender);
 
 }

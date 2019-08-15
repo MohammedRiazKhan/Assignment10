@@ -32,7 +32,7 @@ public class RaceRepositoryImplTest {
     @Test
     public void create() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         repository.create(employee);
 
@@ -45,7 +45,7 @@ public class RaceRepositoryImplTest {
     @Test
     public void read() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         repository.create(employee);
 
@@ -57,10 +57,10 @@ public class RaceRepositoryImplTest {
     @Test
     public void update() {
 
-        Race employee = RaceFactory.buildRace(1,"Indian");
+        Race employee = RaceFactory.buildRace("Indian");
         repository.create(employee);
 
-        Race updatedRace =  RaceFactory.buildRace(1,"White");
+        Race updatedRace =  RaceFactory.buildRace("White");
 
         repository.update(updatedRace);
 
@@ -71,7 +71,7 @@ public class RaceRepositoryImplTest {
     @Test
     public void delete() {
 
-        Race employee = RaceFactory.buildRace(1,"fa");
+        Race employee = RaceFactory.buildRace("fa");
 
         repository.create(employee);
 

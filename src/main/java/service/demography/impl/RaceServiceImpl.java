@@ -1,5 +1,6 @@
 package service.demography.impl;
 
+import domain.demography.Gender;
 import domain.demography.Race;
 import repository.demography.RaceRepository;
 import repository.demography.impl.RaceRepositoryImpl;
@@ -35,8 +36,8 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public Race read(Integer integer) {
-        return repository.read(integer);
+    public Race read(String id) {
+        return repository.read(id);
     }
 
     @Override
@@ -45,7 +46,13 @@ public class RaceServiceImpl implements RaceService {
     }
 
     @Override
-    public void delete(Integer integer) {
-        repository.delete(integer);
+    public void delete(String id) {
+        repository.delete(id);
+    }
+
+    //need to implement a method which will get a race by Name
+    public Race readByName(String raceDesc){
+        //will query the repository/db and find the race by its name
+        return null;
     }
 }

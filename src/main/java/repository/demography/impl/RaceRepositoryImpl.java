@@ -26,7 +26,6 @@ public class RaceRepositoryImpl implements RaceRepository {
         return raceRepository;
     }
 
-
     @Override
     public Set<Race> getAll() {
         return races;
@@ -39,9 +38,9 @@ public class RaceRepositoryImpl implements RaceRepository {
     }
 
     @Override
-    public Race read(Integer integer) {
+    public Race read(String id) {
 
-        return races.stream().filter(race -> race.getRaceID() == integer).findAny().orElse(null);
+        return races.stream().filter(race -> race.getRaceID() == id).findAny().orElse(null);
     }
 
     @Override
@@ -57,14 +56,18 @@ public class RaceRepositoryImpl implements RaceRepository {
     }
 
     @Override
-    public void delete(Integer integer) {
-        Race raceToDelete = read(integer);
+    public void delete(String id) {
+        Race raceToDelete = read(id);
 
         if(raceToDelete != null) {
             races.remove(raceToDelete);
         }
     }
 
-
+    //method which will search the set/db for the corresponding gender
+    public Race readByName(String raceDesc){
+        //do the logic to get the gender
+        return races.stream().filter(race -> race.getDesc().equals(raceDesc)).findAny().orElse(null);
+    }
 
 }

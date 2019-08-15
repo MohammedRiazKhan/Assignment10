@@ -2,7 +2,7 @@ package domain.demography;
 
 public class Gender {
 
-    private int id;
+    private String id;
     private String desc;
 
     private Gender(){
@@ -17,7 +17,7 @@ public class Gender {
     }
 
 
-    public int getId(){
+    public String getId(){
         return id;
     }
 
@@ -25,7 +25,7 @@ public class Gender {
         return desc;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,10 +44,10 @@ public class Gender {
 
     public static class Builder {
 
-        private int id;
+        private String id;
         private String desc;
 
-        public Builder id(int id){
+        public Builder id(String id){
 
             this.id = id;
             return this;

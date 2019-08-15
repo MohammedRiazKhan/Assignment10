@@ -16,6 +16,8 @@ import repository.user.EmployeeGenderRepository;
 import repository.user.EmployeeRepository;
 import repository.user.impl.EmployeeGenderRepositoryImpl;
 import repository.user.impl.EmployeeRepositoryImpl;
+import service.demography.impl.GenderServiceImpl;
+import service.demography.impl.RaceServiceImpl;
 import service.user.EmployeeService;
 
 import java.util.Set;
@@ -54,8 +56,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee read(Integer integer) {
-        return repository.read(integer);
+    public Employee read(String id) {
+        return repository.read(id);
     }
 
     @Override
@@ -64,29 +66,34 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(String id) {
 
-        repository.delete(integer);
+        repository.delete(id);
 
     }
 
     @Override
-    public void createEmp(int empId, String firstName, String lastName, int genderId, int raceId){
+    public Employee createEmployee(String firstName, String lastName, String race, String gender){
 
-        Employee employee = EmployeeFactory.getEmployee(empId, firstName, lastName);
-        repository.create(employee);
+        Gender aGender = GenderServiceImpl.getService().readByName(gender);
+        if(aGender == null){
+            return null;
+        }
 
-        Race race = RaceFactory.buildRace(raceId, "Race");
-        raceRepository.create(race);
+        Race aRace = RaceServiceImpl.getService().readByName(race);
+        if(aRace == null){
+            return null;
+        }
 
-        Gender gender = GenderFactory.buildGender(genderId, "None");
-        genderRepository.create(gender);
+        Employee employee = EmployeeFactory.getEmployee(firstName, lastName);
+        if(employee == null){
+            return null;
+        }
 
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(empId, genderId);
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(employee.getEmpNumber(), aGender.getId());
         employeeGenderRepository.create(employeeGender);
 
-
-
+        return create(employee);
 
     }
 
