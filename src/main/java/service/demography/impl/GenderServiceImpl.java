@@ -49,11 +49,16 @@ public class GenderServiceImpl implements GenderService {
         repository.delete(id);
     }
 
-    //need to implement a method which will get a gender by Name
     @Override
+    //method which will search the set/db for the corresponding gender
     public Gender readByName(String genderDesc){
-        //will query the repository/db and find the gender by its name
-        //in the repository there must be a method which returns that value
-        return repository.readByName(genderDesc);
+        //do the logic to get the gender
+        return repository.getAll()
+                .stream()
+                .filter(gender -> gender.getDesc().equals(genderDesc))
+                .findAny().orElse(null);
     }
+
+
+
 }

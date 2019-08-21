@@ -2,7 +2,7 @@ package domain.demography;
 
 public class Gender {
 
-    private String id;
+    private String genderId;
     private String desc;
 
     private Gender(){
@@ -11,22 +11,22 @@ public class Gender {
 
     public Gender(Builder builder){
 
-        this.id = builder.id;
+        this.genderId = builder.genderId;
         this.desc = builder.desc;
 
     }
 
 
-    public String getId(){
-        return id;
+    public String getGenderId(){
+        return genderId;
     }
 
     public String getDesc(){
         return desc;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setGenderId(String genderId) {
+        this.genderId = genderId;
     }
 
     public void setDesc(String desc) {
@@ -36,7 +36,7 @@ public class Gender {
     @Override
     public String toString() {
         return "Gender{" +
-                "id='" + id + '\'' +
+                "genderId='" + genderId + '\'' +
                 ", desc='" + desc + '\'' +
                 '}';
     }
@@ -44,12 +44,12 @@ public class Gender {
 
     public static class Builder {
 
-        private String id;
+        private String genderId;
         private String desc;
 
         public Builder id(String id){
 
-            this.id = id;
+            this.genderId = id;
             return this;
 
         }

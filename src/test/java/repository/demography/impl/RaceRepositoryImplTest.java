@@ -9,8 +9,6 @@ import repository.demography.RaceRepository;
 
 import java.util.Set;
 
-import static org.junit.Assert.*;
-
 public class RaceRepositoryImplTest {
 
     private RaceRepository repository;
@@ -36,7 +34,7 @@ public class RaceRepositoryImplTest {
 
         repository.create(employee);
 
-        Race inRepo = repository.read(employee.getRaceID());
+        Race inRepo = repository.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
 
@@ -49,7 +47,7 @@ public class RaceRepositoryImplTest {
 
         repository.create(employee);
 
-        Race inRepo = repository.read(employee.getRaceID());
+        Race inRepo = repository.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
     }
@@ -75,13 +73,13 @@ public class RaceRepositoryImplTest {
 
         repository.create(employee);
 
-        Race inRepo = repository.read(employee.getRaceID());
+        Race inRepo = repository.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
 
-        repository.delete(employee.getRaceID());
+        repository.delete(employee.getRaceId());
 
-        Race deleted = repository.read(employee.getRaceID());
+        Race deleted = repository.read(employee.getRaceId());
 
         Assert.assertNull(deleted);
 

@@ -11,6 +11,10 @@ import factory.user.EmployeeGenderFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import service.demography.GenderService;
+import service.demography.RaceService;
+import service.demography.impl.GenderServiceImpl;
+import service.demography.impl.RaceServiceImpl;
 import service.user.EmployeeService;
 
 import java.util.Set;
@@ -18,10 +22,14 @@ import java.util.Set;
 public class EmployeeServiceImplTest {
 
     private EmployeeService service;
+    private RaceService raceService;
+    private GenderService genderService;
 
     @Before
     public void setUp() throws Exception {
         this.service = EmployeeServiceImpl.getService();
+        raceService = RaceServiceImpl.getService();
+        genderService = GenderServiceImpl.getService();
     }
 
     @Test
@@ -90,6 +98,21 @@ public class EmployeeServiceImplTest {
 
         Assert.assertNull(deleted);
 
+    }
+
+    @Test
+    public void createEmployee() {
+
+        Race race = RaceFactory.buildRace("Indian");
+        raceService.create(race);
+        System.out.println(race);
+
+        Gender gender = GenderFactory.buildGender("M");
+        genderService.create(gender);
+        System.out.println(gender);
+
+        Employee employee = service.createEmployee("Riaz", "Khan", "M", "Indian");
+        Assert.assertNotNull(employee);
     }
 
 

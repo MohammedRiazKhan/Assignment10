@@ -8,6 +8,5 @@ import java.util.Set;
 public interface RaceRepository extends Repository<Race, String> {
 
     Set<Race> getAll();
-    Race readByName(String desc);
 
 }

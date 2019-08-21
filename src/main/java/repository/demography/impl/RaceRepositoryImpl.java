@@ -40,13 +40,13 @@ public class RaceRepositoryImpl implements RaceRepository {
     @Override
     public Race read(String id) {
 
-        return races.stream().filter(race -> race.getRaceID() == id).findAny().orElse(null);
+        return races.stream().filter(race -> race.getRaceId() == id).findAny().orElse(null);
     }
 
     @Override
     public Race update(Race race) {
 
-        Race raceToDelete = read(race.getRaceID());
+        Race raceToDelete = read(race.getRaceId());
 
         if(raceToDelete != null) {
             races.remove(raceToDelete);
@@ -64,10 +64,6 @@ public class RaceRepositoryImpl implements RaceRepository {
         }
     }
 
-    //method which will search the set/db for the corresponding gender
-    public Race readByName(String raceDesc){
-        //do the logic to get the gender
-        return races.stream().filter(race -> race.getDesc().equals(raceDesc)).findAny().orElse(null);
-    }
+
 
 }

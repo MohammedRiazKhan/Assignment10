@@ -2,19 +2,19 @@ package domain.user;
 
 public class EmployeeGender {
 
-    private String genderID;
+    private String genderId;
     private String empNumber;
 
     public EmployeeGender(){
 
     }
 
-    public String getGenderID() {
-        return genderID;
+    public String getGenderId() {
+        return genderId;
     }
 
-    public void setGenderID(String genderID) {
-        this.genderID = genderID;
+    public void setGenderId(String genderId) {
+        this.genderId = genderId;
     }
 
     public String getEmpNumber() {
@@ -29,7 +29,7 @@ public class EmployeeGender {
 
 
         this.empNumber = empNumber;
-        this.genderID = genderId;
+        this.genderId = genderId;
         return this;
 
 
@@ -39,7 +39,7 @@ public class EmployeeGender {
     public String toString() {
         return "EmployeeGender{" +
                 "empNumber='" + empNumber + '\'' +
-                ", genderID='" + genderID + '\'' +
+                ", genderId='" + genderId + '\'' +
                 '}';
     }
 

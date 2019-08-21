@@ -8,6 +8,5 @@ import java.util.Set;
 public interface GenderRepository extends Repository<Gender, String> {
 
     Set<Gender> getAll();
-    Gender readByName(String desc);
 
 }

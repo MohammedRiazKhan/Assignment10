@@ -9,5 +9,4 @@ public interface GenderService extends Service<Gender, String> {
 
     Set<Gender> getAll();
     Gender readByName(String desc);
-
 }

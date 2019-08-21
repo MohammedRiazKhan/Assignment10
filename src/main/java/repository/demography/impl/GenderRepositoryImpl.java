@@ -44,14 +44,14 @@ public class GenderRepositoryImpl implements GenderRepository {
     @Override
     public Gender read(String id) {
 
-        return genders.stream().filter(gender -> gender.getId() == id).findAny().orElse(null);
+        return genders.stream().filter(gender -> gender.getGenderId() == id).findAny().orElse(null);
 
     }
 
     @Override
     public Gender update(Gender gender) {
 
-        Gender genderToDelete = read(gender.getId());
+        Gender genderToDelete = read(gender.getGenderId());
 
         if(genderToDelete != null) {
             genders.remove(genderToDelete);
@@ -72,11 +72,7 @@ public class GenderRepositoryImpl implements GenderRepository {
 
     }
 
-    //method which will search the set/db for the corresponding gender
-    public Gender readByName(String genderDesc){
-        //do the logic to get the gender
-        return genders.stream().filter(gender -> gender.getDesc().equals(genderDesc)).findAny().orElse(null);
-    }
+
 
 
 }

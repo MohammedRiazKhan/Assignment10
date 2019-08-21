@@ -4,8 +4,6 @@ import domain.demography.Gender;
 import domain.demography.Race;
 import domain.user.Employee;
 import domain.user.EmployeeGender;
-import factory.demography.GenderFactory;
-import factory.demography.RaceFactory;
 import factory.user.EmployeeFactory;
 import factory.user.EmployeeGenderFactory;
 import repository.demography.GenderRepository;
@@ -77,23 +75,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Gender aGender = GenderServiceImpl.getService().readByName(gender);
         if(aGender == null){
-            return null;
+            System.out.println("Not there");
         }
 
         Race aRace = RaceServiceImpl.getService().readByName(race);
         if(aRace == null){
-            return null;
+            System.out.println("Still Not there");
         }
 
         Employee employee = EmployeeFactory.getEmployee(firstName, lastName);
         if(employee == null){
-            return null;
+            System.out.println("Still here");
         }
 
-        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(employee.getEmpNumber(), aGender.getId());
+        EmployeeGender employeeGender = EmployeeGenderFactory.buildEmployeeGender(employee.getEmpNumber(), aGender.getGenderId());
         employeeGenderRepository.create(employeeGender);
 
-        return create(employee);
+        Employee createdEmp = create(employee);
+
+        return createdEmp;
 
     }
 

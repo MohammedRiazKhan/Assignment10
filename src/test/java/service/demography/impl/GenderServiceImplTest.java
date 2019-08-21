@@ -33,7 +33,7 @@ public class GenderServiceImplTest {
 
         service.create(employee);
 
-        Gender inRepo = service.read(employee.getId());
+        Gender inRepo = service.read(employee.getGenderId());
 
         Assert.assertNotNull(inRepo);
 
@@ -46,7 +46,7 @@ public class GenderServiceImplTest {
 
         service.create(employee);
 
-        Gender inRepo = service.read(employee.getId());
+        Gender inRepo = service.read(employee.getGenderId());
 
         Assert.assertNotNull(inRepo);
     }
@@ -57,13 +57,13 @@ public class GenderServiceImplTest {
         Gender employee = GenderFactory.buildGender("M");
 
         service.create(employee);
-        Gender inRepo = service.read(employee.getId());
+        Gender inRepo = service.read(employee.getGenderId());
 
         employee.setDesc("Not Riaz");
 
         service.update(employee);
 
-        Assert.assertEquals(employee.getId(), inRepo.getId());
+        Assert.assertEquals(employee.getGenderId(), inRepo.getGenderId());
 
     }
 
@@ -74,15 +74,29 @@ public class GenderServiceImplTest {
 
         service.create(employee);
 
-        Gender inRepo = service.read(employee.getId());
+        Gender inRepo = service.read(employee.getGenderId());
 
         Assert.assertNotNull(inRepo);
 
-        service.delete(employee.getId());
+        service.delete(employee.getGenderId());
 
-        Gender deleted = service.read(employee.getId());
+        Gender deleted = service.read(employee.getGenderId());
 
         Assert.assertNull(deleted);
+
+    }
+
+    @Test
+    public void readByName() {
+
+        Gender employee = GenderFactory.buildGender("M");
+
+        service.create(employee);
+
+        Gender gender2 = service.readByName("M");
+
+        Assert.assertEquals(employee.getDesc(), gender2.getDesc());
+
 
     }
 }

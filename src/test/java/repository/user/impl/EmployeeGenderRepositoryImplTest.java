@@ -9,8 +9,6 @@ import repository.user.EmployeeGenderRepository;
 
 import java.util.Set;
 
-import static org.junit.Assert.*;
-
 public class EmployeeGenderRepositoryImplTest {
 
     private EmployeeGenderRepository repository;
@@ -64,7 +62,7 @@ public class EmployeeGenderRepositoryImplTest {
 
         repository.update(updatedEmpGender);
 
-        Assert.assertNotEquals(employee.getGenderID(), updatedEmpGender.getEmpNumber());
+        Assert.assertNotEquals(employee.getGenderId(), updatedEmpGender.getEmpNumber());
 
     }
 

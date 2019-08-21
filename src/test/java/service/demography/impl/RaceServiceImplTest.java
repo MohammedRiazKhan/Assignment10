@@ -9,8 +9,6 @@ import service.demography.RaceService;
 
 import java.util.Set;
 
-import static org.junit.Assert.*;
-
 public class RaceServiceImplTest {
 
     private RaceService service;
@@ -35,7 +33,7 @@ public class RaceServiceImplTest {
 
         service.create(employee);
 
-        Race inRepo = service.read(employee.getRaceID());
+        Race inRepo = service.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
 
@@ -48,7 +46,7 @@ public class RaceServiceImplTest {
 
         service.create(employee);
 
-        Race inRepo = service.read(employee.getRaceID());
+        Race inRepo = service.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
     }
@@ -59,13 +57,13 @@ public class RaceServiceImplTest {
         Race employee = RaceFactory.buildRace("fa");
 
         service.create(employee);
-        Race inRepo = service.read(employee.getRaceID());
+        Race inRepo = service.read(employee.getRaceId());
 
         employee.setDesc("Not Riaz");
 
         service.update(employee);
 
-        Assert.assertEquals(employee.getRaceID(), inRepo.getRaceID());
+        Assert.assertEquals(employee.getRaceId(), inRepo.getRaceId());
 
     }
 
@@ -76,15 +74,28 @@ public class RaceServiceImplTest {
 
         service.create(employee);
 
-        Race inRepo = service.read(employee.getRaceID());
+        Race inRepo = service.read(employee.getRaceId());
 
         Assert.assertNotNull(inRepo);
 
-        service.delete(employee.getRaceID());
+        service.delete(employee.getRaceId());
 
-        Race deleted = service.read(employee.getRaceID());
+        Race deleted = service.read(employee.getRaceId());
 
         Assert.assertNull(deleted);
+
+    }
+
+    @Test
+    public void readByName() {
+
+        Race employee = RaceFactory.buildRace("fa");
+
+        service.create(employee);
+
+        Race gender2 = service.readByName("fa");
+
+        Assert.assertEquals(employee.getDesc(), gender2.getDesc());
 
     }
 }
